@@ -3,9 +3,8 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import ProjectGrid from '../components/ProjectGrid.astro';
 import { getCollection } from 'astro:content';
-import { getLangFromUrl } from '../i18n/ui';
 
-const lang = getLangFromUrl(Astro.url);
+const lang = 'fr';
 
 const projects = (await getCollection('projects'))
   .filter((p) => p.data.published)
@@ -19,7 +18,7 @@ const projects = (await getCollection('projects'))
   }));
 ---
 
-<Layout>
+<Layout lang={lang}>
   <Hero lang={lang} />
   <ProjectGrid lang={lang} projects={projects} />
 </Layout>
