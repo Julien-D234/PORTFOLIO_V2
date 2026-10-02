@@ -3,6 +3,8 @@
 @import "@fontsource/space-grotesk/400.css";
 @import "@fontsource/space-grotesk/500.css";
 @import "@fontsource/space-grotesk/700.css";
+@import "@fontsource/playfair-display/700.css";
+@import "@fontsource/playfair-display/900.css";
 @import "tailwindcss";
 
 /* ============================================================
@@ -22,9 +24,10 @@
   --color-accent-deep: #24338f;
 
   /* Typographie */
-  --font-display: "Oswald", ui-sans-serif, sans-serif;
-  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, "IBM Plex Mono", Menlo, monospace;
+    --font-display: "Oswald", ui-sans-serif, sans-serif;
+    --font-serif: "Playfair Display", Georgia, serif;
+    --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: ui-monospace, "IBM Plex Mono", Menlo, monospace;
 }
 
 /* ============================================================
@@ -129,6 +132,42 @@ h1, h2, h3 {
   border-color: var(--color-accent);
 }
 
+/* Numéro géant (index) */
+.giant-numeral {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--color-accent) 16%, transparent);
+}
+
+/* Réglure éditoriale */
+.ruled {
+  position: relative;
+  height: 1px;
+  background: linear-gradient(90deg, var(--color-border), transparent);
+}
+.ruled::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  background: var(--color-accent);
+}
+
+/* Étiquette verticale */
+.vertical-label {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+}
+
 /* ============================================================
    Animations (sobres)
    ============================================================ */
@@ -178,6 +217,14 @@ h1, h2, h3 {
 }
 .animate-marquee {
   animation: marquee 26s linear infinite;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
 }
 
 .delay-1 { animation-delay: 0.08s; }
