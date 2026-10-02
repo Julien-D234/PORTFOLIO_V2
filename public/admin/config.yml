@@ -29,7 +29,7 @@ auth:
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 
 # Add site links in Decap CMS (optional)
-site_url: https://julien-d234.github.io
+site_url: https://julien-d234.github.io/PORTFOLIO_V2
 
 # Media files
 media_folder: public/images
