@@ -1,0 +1,43 @@
+---
+import { Github, Linkedin, Twitter, Mail } from 'lucide-astro';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const socials = [
+  { href: 'https://github.com/Julien-D234', label: 'GitHub', icon: Github },
+  { href: 'https://www.linkedin.com/', label: 'LinkedIn', icon: Linkedin },
+  { href: 'https://twitter.com/', label: 'Twitter', icon: Twitter },
+  { href: 'mailto:contact@example.com', label: 'Email', icon: Mail },
+];
+---
+
+<footer id="contact" class="border-t border-border">
+  <div class="mx-auto flex w-full max-w-4xl flex-col items-center gap-6 px-5 py-10 sm:px-8">
+    <div class="flex items-center gap-6">
+      {socials.map(({ href, label, icon: Icon }) => (
+        <a
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={label}
+          class="text-muted transition-colors hover:text-accent"
+        >
+          <Icon class="h-5 w-5" />
+        </a>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <p class="mono text-xs text-faint">
+        © {new Date().getFullYear()} Julien Druelle — {t('footer.rights')}
+      </p>
+      <p class="mono mt-1 text-xs text-faint">{t('footer.built')}</p>
+    </div>
+  </div>
+</footer>

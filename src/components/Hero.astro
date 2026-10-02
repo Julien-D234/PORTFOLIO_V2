@@ -1,0 +1,78 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="flex min-h-[70vh] flex-col justify-center py-20">
+  <div class="animate-fade-up">
+    <p class="mono text-sm text-accent">
+      <span class="text-faint">//</span> {t('hero.role')}
+    </p>
+  </div>
+
+  <h1 class="mono mt-4 text-4xl font-bold leading-tight tracking-tight sm:text-6xl animate-fade-up delay-1">
+    {t('hero.name')}
+  </h1>
+
+  <p class="mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg animate-fade-up delay-2">
+    {t('hero.tagline')}
+  </p>
+
+  <!-- Fausse invite de commande animée (effet typing) -->
+  <div
+    class="mt-10 border border-border bg-surface p-4 font-mono text-sm animate-fade-up delay-3"
+    aria-label="Terminal"
+  >
+    <div class="flex items-center gap-1.5 pb-3">
+      <span class="h-2.5 w-2.5 bg-faint"></span>
+      <span class="h-2.5 w-2.5 bg-faint"></span>
+      <span class="h-2.5 w-2.5 bg-faint"></span>
+    </div>
+    <p class="text-muted">
+      <span class="text-accent">{t('hero.prompt')}</span>
+      <span id="typed-command" class="text-foreground"></span>
+      <span class="animate-caret text-accent">▍</span>
+    </p>
+    <p id="typed-output" class="mt-2 hidden text-foreground"></p>
+  </div>
+
+  <div class="mt-10 flex flex-wrap gap-4 animate-fade-up delay-4">
+    <a
+      href="#projects"
+      class="border border-accent bg-accent px-6 py-3 font-mono text-sm font-semibold text-black transition-colors hover:bg-transparent hover:text-accent"
+    >
+      {t('hero.cta')} →
+    </a>
+  </div>
+</section>
+
+<script>
+  const command = 'whoami';
+  const output = 'Julien Druelle — Développeur informatique / Software developer';
+
+  const cmdEl = document.getElementById('typed-command');
+  const outEl = document.getElementById('typed-output');
+
+  let i = 0;
+  function type() {
+    if (i <= command.length) {
+      if (cmdEl) cmdEl.textContent = command.slice(0, i);
+      i++;
+      setTimeout(type, 90);
+    } else {
+      setTimeout(() => {
+        if (outEl) {
+          outEl.textContent = output;
+          outEl.classList.remove('hidden');
+        }
+      }, 300);
+    }
+  }
+  type();
+</script>

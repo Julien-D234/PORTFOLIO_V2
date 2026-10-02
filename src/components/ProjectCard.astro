@@ -1,0 +1,43 @@
+---
+import { ArrowUpRight } from 'lucide-astro';
+import { useTranslations, type Lang } from '../i18n/ui';
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  techs: string[];
+  link?: string;
+  lang: Lang;
+}
+
+const { id, title, description, techs, link, lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<article class="group flex flex-col border border-border bg-surface p-6 transition-colors hover:border-accent">
+  <div class="flex items-start justify-between">
+    <span class="mono text-sm text-faint">#{id}</span>
+    <ArrowUpRight class="h-4 w-4 text-faint transition-colors group-hover:text-accent" />
+  </div>
+
+  <h3 class="mono mt-4 text-lg font-semibold tracking-tight text-foreground">{title}</h3>
+  <p class="mt-2 flex-1 text-sm leading-relaxed text-muted">{description}</p>
+
+  <div class="mt-4 flex flex-wrap gap-2">
+    {techs.map((tech) => (
+      <span class="mono border border-border px-2 py-0.5 text-xs text-muted">{tech}</span>
+    ))}
+  </div>
+
+  {link && (
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mono mt-5 inline-flex items-center gap-1 text-sm text-accent transition-colors hover:text-accent-violet"
+    >
+      {t('projects.view')} <span aria-hidden="true">→</span>
+    </a>
+  )}
+</article>

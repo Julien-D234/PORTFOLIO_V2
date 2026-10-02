@@ -1,0 +1,46 @@
+---
+import { useTranslations, type Lang } from '../i18n/ui';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  lang: Lang;
+  projects: {
+    id: string;
+    title: string;
+    description: string;
+    techs: string[];
+    link?: string;
+  }[];
+}
+
+const { lang, projects } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section id="projects" class="scroll-mt-20 py-20">
+  <div class="mb-10">
+    <h2 class="mono text-2xl font-bold tracking-tight sm:text-3xl">
+      <span class="text-accent">#</span> {t('projects.title')}
+    </h2>
+    <p class="mt-2 text-sm text-muted">{t('projects.subtitle')}</p>
+  </div>
+
+  {projects.length > 0 ? (
+    <div class="grid gap-5 sm:grid-cols-2">
+      {projects.map((p, idx) => (
+        <ProjectCard
+          id={String(idx + 1).padStart(2, '0')}
+          title={p.title}
+          description={p.description}
+          techs={p.techs}
+          link={p.link}
+          lang={lang}
+        />
+      ))}
+    </div>
+  ) : (
+    <div class="border border-dashed border-border p-10 text-center">
+      <p class="mono text-sm text-muted">{t('projects.empty')}</p>
+    </div>
+  )}
+</section>
