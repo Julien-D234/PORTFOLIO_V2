@@ -11,8 +11,8 @@ const projects = (await getCollection('projects'))
   .sort((a, b) => a.data.order - b.data.order)
   .map((p) => ({
     id: p.id,
-    title: p.data.title[lang],
-    description: p.data.description[lang],
+    title: (p.data.title?.[lang] as string) ?? '',
+    description: (p.data.description?.[lang] as string) ?? '',
     techs: p.data.techs,
     link: p.data.link,
   }));

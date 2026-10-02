@@ -7,15 +7,19 @@ const projects = defineCollection({
     base: './src/content/projects',
   }),
   schema: z.object({
-    title: z.object({
-      fr: z.string(),
-      en: z.string(),
-    }),
-    description: z.object({
-      fr: z.string(),
-      en: z.string(),
-    }),
-    techs: z.array(z.string()),
+    title: z
+      .object({
+        fr: z.string(),
+        en: z.string(),
+      })
+      .optional(),
+    description: z
+      .object({
+        fr: z.string(),
+        en: z.string(),
+      })
+      .optional(),
+    techs: z.array(z.string()).default([]),
     link: z.string().url().optional(),
     image: z.string().optional(),
     order: z.number().default(0),
