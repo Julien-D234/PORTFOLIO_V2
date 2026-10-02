@@ -13,31 +13,29 @@ const rootLink = base;
 const langLink = otherLang === 'fr' ? base : `${base}en`;
 ---
 
-<header class="sticky top-0 z-50 border-b-[3px] border-border bg-background">
-  <nav class="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-5 py-4 sm:px-8">
-    <a href={rootLink} class="flex items-center gap-3">
-      <span class="flex h-9 items-center border-[3px] border-border bg-accent px-3 shadow-hard-sm">
-        <span class="font-display text-sm uppercase text-white">JD</span>
-      </span>
-      <span class="hidden font-display text-base uppercase tracking-tight sm:block">
-        Julien<span class="text-accent">·</span>Druelle
-      </span>
+<header class="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
+  <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
+    <a href={rootLink} class="flex items-center gap-2 font-mono text-sm">
+      <span class="text-accent">~/</span>julien<span class="text-accent">:</span>dev<span class="text-muted">:~$</span>
     </a>
 
-    <div class="flex items-center gap-2 sm:gap-3">
-      <a href="#projects" class="border-[3px] border-border bg-surface px-3 py-2 font-mono text-xs font-bold uppercase tracking-wide shadow-hard-sm transition-transform hover:-translate-y-0.5">
-        {t('nav.projects')}
+    <div class="flex items-center gap-5 sm:gap-6">
+      <a href="#projects" class="font-mono text-xs text-muted transition-colors hover:text-accent">
+        ./{t('nav.projects')}
       </a>
-      <a href="#contact" class="border-[3px] border-border bg-surface px-3 py-2 font-mono text-xs font-bold uppercase tracking-wide shadow-hard-sm transition-transform hover:-translate-y-0.5">
-        {t('nav.contact')}
+      <a href="#contact" class="font-mono text-xs text-muted transition-colors hover:text-accent">
+        ./{t('nav.contact')}
       </a>
-      <a href={langLink} class="border-[3px] border-border bg-accent-yellow px-3 py-2 font-mono text-xs font-bold uppercase tracking-wide shadow-hard-sm transition-transform hover:-translate-y-0.5"
-        aria-label={otherLang === 'fr' ? 'Passer en français' : 'Switch to English'}>
-        {otherLang === 'fr' ? 'FR' : 'EN'}
+      <a
+        href={langLink}
+        class="font-mono text-xs text-accent transition-colors hover:text-accent-violet"
+        aria-label={otherLang === 'fr' ? 'Passer en français' : 'Switch to English'}
+      >
+        [{otherLang === 'fr' ? 'fr' : 'en'}]
       </a>
-      <span class="hidden items-center gap-2 border-[3px] border-border bg-accent-pink px-3 py-2 shadow-hard-sm sm:flex">
-        <span class="h-2.5 w-2.5 bg-foreground animate-blink"></span>
-        <span class="font-mono text-xs font-bold uppercase tracking-wide">{t('nav.status')}</span>
+      <span class="hidden items-center gap-2 font-mono text-xs text-muted sm:flex">
+        <span class="h-2 w-2 rounded-full bg-accent-green animate-node"></span>
+        {t('nav.status')}
       </span>
     </div>
   </nav>

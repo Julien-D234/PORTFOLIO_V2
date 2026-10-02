@@ -7,70 +7,81 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
-
-const marquee = (lang === 'fr'
-  ? ['PROJETS', 'DÉVELOPPEMENT', 'WEB', 'UI / UX', 'OPEN SOURCE', 'FRONTEND', 'CRÉATIF']
-  : ['PROJECTS', 'DEVELOPMENT', 'WEB', 'UI / UX', 'OPEN SOURCE', 'FRONTEND', 'CREATIVE']);
 ---
 
 <section id="top" class="relative overflow-hidden">
-  <div class="mx-auto grid w-full max-w-6xl gap-12 px-5 pb-16 pt-12 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pb-20 lg:pt-16">
+  <div class="mx-auto grid w-full max-w-6xl gap-14 px-5 pb-20 pt-14 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:pt-20">
     <!-- ===== Colonne gauche ===== -->
-    <div class="relative">
-      <span class="sticker -rotate-2 bg-accent-yellow animate-fade-up">✳ {t('hero.role')}</span>
+    <div>
+      <p class="font-mono text-sm text-accent animate-fade-up">
+        <span class="text-faint">//</span> {t('hero.role')}
+      </p>
 
-      <h1 class="mt-8 animate-fade-up delay-1">
-        <span class="block text-6xl uppercase leading-[0.9] sm:text-8xl lg:text-[6.5rem]">Julien</span>
-        <span class="mt-2 inline-block bg-accent-yellow px-3 text-6xl uppercase leading-[0.9] sm:text-8xl lg:text-[6.5rem]">
-          Druelle
+      <h1 class="mt-5 animate-fade-up delay-1">
+        <span class="block text-6xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">Julien</span>
+        <span class="block text-6xl font-bold leading-[0.95] tracking-tight sm:text-7xl lg:text-8xl">
+          <span class="text-accent">Dr</span>uelle
         </span>
       </h1>
 
-      <p class="mt-8 max-w-md text-lg leading-relaxed text-muted animate-fade-up delay-2">
+      <p class="mt-6 max-w-md text-base leading-relaxed text-muted animate-fade-up delay-2">
         {t('hero.tagline')}
       </p>
 
-      <div class="mt-10 flex flex-wrap items-center gap-4 animate-fade-up delay-3">
-        <a href="#projects" class="btn bg-accent text-white">
+      <!-- Terminal / System-native -->
+      <div class="code-block mt-10 max-w-md animate-fade-up delay-3">
+        <div class="flex items-center gap-2 border-b border-border px-4 py-2.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-faint"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-faint"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-faint"></span>
+          <span class="ml-2 font-mono text-[0.68rem] text-faint">zsh — julien@dev</span>
+        </div>
+        <div class="px-4 py-4">
+          <p class="text-muted"><span class="text-accent">$</span> whoami</p>
+          <p class="text-foreground">julien_druelle — développeur full-stack</p>
+          <p class="mt-1 text-muted"><span class="text-accent">$</span> cat about.json</p>
+          <p class="text-foreground"><span class="text-faint">{}</span> "apps web soignées &amp; performantes"</p>
+          <p class="mt-1 text-muted"><span class="text-accent">$</span> <span class="inline-block h-4 w-2 translate-y-0.5 bg-accent animate-blink"></span></p>
+        </div>
+      </div>
+
+      <div class="mt-8 flex flex-wrap items-center gap-4 animate-fade-up delay-4">
+        <a
+          href="#projects"
+          class="btn-accent inline-flex items-center gap-2 border border-accent bg-accent px-6 py-3 font-mono text-sm font-semibold text-white transition-colors hover:bg-accent/10 hover:text-accent"
+        >
           {t('hero.cta')} <span aria-hidden="true">→</span>
         </a>
-        <a href="#contact" class="btn bg-surface">
-          {t('nav.contact')}
+        <a href="#contact" class="font-mono text-sm text-muted transition-colors hover:text-accent">
+          {t('nav.contact')} <span class="text-accent">_</span>
         </a>
       </div>
-
-      <div class="mt-10 flex flex-wrap items-center gap-3 animate-fade-up delay-4">
-        <span class="sticker rotate-1 bg-accent-green">
-          <span class="mr-1 inline-block h-2.5 w-2.5 bg-foreground animate-blink"></span>
-          online
-        </span>
-        <span class="font-mono text-xs font-bold uppercase tracking-wide text-muted">
-          {lang === 'fr' ? 'disponible pour projets' : 'open to work'}
-        </span>
-      </div>
     </div>
 
-    <!-- ===== Colonne droite : carte graphique ===== -->
-    <div class="relative hidden animate-fade-in delay-2 lg:block">
-      <div class="relative rotate-2 border-[3px] border-border bg-accent-yellow p-8 shadow-hard">
-        <div class="flex aspect-square flex-col items-center justify-center gap-6 border-[3px] border-border bg-surface">
-          <span class="text-8xl leading-none">⚡</span>
-          <span class="sticker -rotate-3 bg-accent-pink text-white">hello!</span>
+    <!-- ===== Colonne droite : médaillon techno-mythologique ===== -->
+    <div class="hidden animate-fade-in delay-2 lg:flex lg:justify-center">
+      <div class="w-full max-w-sm">
+        <div class="meander mb-6"></div>
+
+        <div class="relative mx-auto aspect-square">
+          <div class="absolute inset-0 rounded-full border border-border"></div>
+          <div class="absolute inset-4 rounded-full border border-border/60"></div>
+          <div class="absolute inset-8 animate-rotate-slow rounded-full border border-dashed border-accent/40"></div>
+          <div class="absolute inset-[4.5rem] rounded-full border border-border/50"></div>
+
+          <div class="absolute inset-0 flex items-center justify-center">
+            <span class="font-mono text-6xl font-semibold text-accent animate-glow">JD</span>
+          </div>
+
+          <span class="absolute left-0 top-1/2 -translate-y-1/2 font-mono text-xs text-faint">⟨</span>
+          <span class="absolute right-0 top-1/2 -translate-y-1/2 font-mono text-xs text-faint">⟩</span>
         </div>
-        <span class="sticker absolute -left-4 -top-4 rotate-[-6deg] bg-accent text-white">dev</span>
-        <span class="sticker absolute -bottom-4 -right-3 rotate-3 bg-accent-green">2026</span>
-      </div>
-    </div>
-  </div>
 
-  <!-- ===== Bandeau défilant ===== -->
-  <div class="relative overflow-hidden border-y-[3px] border-border bg-accent-yellow py-3">
-    <div class="flex w-max animate-marquee">
-      {[...marquee, ...marquee].map((w) => (
-        <span class="mx-6 flex items-center gap-6 whitespace-nowrap font-display text-sm uppercase tracking-wide">
-          {w} <span class="text-accent">✳</span>
-        </span>
-      ))}
+        <div class="mt-6 flex items-center justify-between">
+          <p class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-muted">mythos · tech</p>
+          <p class="font-mono text-[0.65rem] tracking-[0.1em] text-faint">fig. 01</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
