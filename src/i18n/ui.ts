@@ -15,7 +15,7 @@ export const ui = {
     'hero.name': 'Julien Druelle',
     'hero.role': 'Développeur informatique',
     'hero.tagline':
-      'Étudiant en informatique — je conçois des applications web performantes, sobres et soignées.',
+      'Je conçois des applications web performantes, sobres et soignées.',
     'hero.cta': 'Voir les projets',
     'projects.title': 'Projets',
     'projects.subtitle': 'Une sélection de mes travaux de développement.',
@@ -33,7 +33,7 @@ export const ui = {
     'hero.name': 'Julien Druelle',
     'hero.role': 'Software developer',
     'hero.tagline':
-      'Computer science student — I build fast, clean and polished web applications.',
+      'I build fast, clean and polished web applications.',
     'hero.cta': 'View projects',
     'projects.title': 'Projects',
     'projects.subtitle': 'A selection of my development work.',
